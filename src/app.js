@@ -12,9 +12,9 @@ import getVisible from './selectors/expenses'
 import moment from 'moment';
 const store = configStore()
 
-const unsubscribe = store.subscribe(()=>{
-console.log(store.getState());  
-})
+// const unsubscribe = store.subscribe(()=>{
+// console.log(store.getState());  
+// })
     // const one = store.dispatch(addExpense({description : 'bottle' , note : 'it is a milton bottle', amount : 200, createdAt : moment().valueOf()}))
     // const two = store.dispatch(addExpense({description : 'mobile phone' , note : 'vivo v9 mobile phone', amount : 3000, createdAt : moment().valueOf()+2*12000}))
     // const  three = store.dispatch(addExpense({description : 'recharge' , note : 'top up', amount : 500, createdAt : moment().valueOf()+4*12000}))
