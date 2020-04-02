@@ -6,7 +6,8 @@
   "mode": "none",
   "scripts": {
     "dev-server": "webpack-dev-server",
-    "serve": "node server/server.js",
+    "start": "node server/server.js",
+    "heroku-postbuild": "npm run build:prod",
     "test": "jest",
     "build:dev": "webpack",
     "build:prod": "webpack -p --env production",
