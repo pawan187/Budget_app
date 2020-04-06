@@ -14,9 +14,9 @@ import './firebase/firebase'
 // import './playground/promises'
 
 const store = configStore()
-const unsubscribe = store.subscribe(()=>{
-console.log(store.getState());  
-})
+// const unsubscribe = store.subscribe(()=>{
+// console.log(store.getState());  
+// })
 // const expense = [
 //     {
 //         id : '684135',
