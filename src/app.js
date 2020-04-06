@@ -6,15 +6,32 @@ import {BrowserRouter, Route, Switch, Link, NavLink } from 'react-router-dom'
 import './Styles/style.scss';
 import AppRouter from './Routers/AppRouters.js'
 import configStore from './store/config-store';
-import {addExpense , editExpense ,removeExpense} from './actions/expenseActions';
-import {setEndDate , setStartDate , sortByAmount ,setTextFilter , sortByDate} from './actions/filterActions';
-import getVisible from './selectors/expenses'
-import moment from 'moment';
-const store = configStore()
+import {addExpense , editExpense ,removeExpense , setExpense , startSetExpense, startEditExpense} from './actions/expenseActions';
+// import {setEndDate , setStartDate , sortByAmount ,setTextFilter , sortByDate} from './actions/filterActions';
+// import getVisible from './selectors/expenses'
+// import moment from 'moment';
+import './firebase/firebase'
+// import './playground/promises'
 
-// const unsubscribe = store.subscribe(()=>{
-// console.log(store.getState());  
-// })
+const store = configStore()
+const unsubscribe = store.subscribe(()=>{
+console.log(store.getState());  
+})
+// const expense = [
+//     {
+//         id : '684135',
+//         description : 'saf',
+//         note : 'adfgagradfg',
+//         amount : 500,
+//         createdAt : 35135168132
+//     },{
+//         id : '4646135',
+//         description : 'saf',
+//         note : 'adfgagradfg',
+//         amount : 500,
+//         createdAt : 35135168132
+//     }
+// ]
     // const one = store.dispatch(addExpense({description : 'bottle' , note : 'it is a milton bottle', amount : 200, createdAt : moment().valueOf()}))
     // const two = store.dispatch(addExpense({description : 'mobile phone' , note : 'vivo v9 mobile phone', amount : 3000, createdAt : moment().valueOf()+2*12000}))
     // const  three = store.dispatch(addExpense({description : 'recharge' , note : 'top up', amount : 500, createdAt : moment().valueOf()+4*12000}))
@@ -34,4 +51,8 @@ const jsx = (
         <AppRouter />
     </Provider>
     )
-ReactDOM.render(jsx,document.getElementById("app"));
+ReactDOM.render(<p>loading....</p>,document.getElementById("app"));
+store.dispatch(startSetExpense())
+.then(()=>{
+        ReactDOM.render(jsx,document.getElementById("app"));
+})
