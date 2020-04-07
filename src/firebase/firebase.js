@@ -11,8 +11,8 @@ var firebaseConfig = {
   };
   firebase.initializeApp(firebaseConfig);
   export default firebase.database();
-  export  {firebase } ;
-
+  const googleProvide  = new firebase.auth.GoogleAuthProvider()
+  export  {firebase , googleProvide } ;
   // database.ref('expense')
   // .on('value',
   //   (snapshot)=>{

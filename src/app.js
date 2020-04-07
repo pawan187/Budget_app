@@ -4,13 +4,14 @@ import ReactDOM from 'react-dom';
 import {Provider } from 'react-redux';
 import {BrowserRouter, Route, Switch, Link, NavLink } from 'react-router-dom'  
 import './Styles/style.scss';
-import AppRouter from './Routers/AppRouters.js'
+import AppRouter , { history } from './Routers/AppRouters.js'
 import configStore from './store/config-store';
 import {addExpense , editExpense ,removeExpense , setExpense , startSetExpense, startEditExpense} from './actions/expenseActions';
+import {Login , Logout} from './actions/auth'
 // import {setEndDate , setStartDate , sortByAmount ,setTextFilter , sortByDate} from './actions/filterActions';
 // import getVisible from './selectors/expenses'
 // import moment from 'moment';
-import './firebase/firebase'
+import {firebase} from './firebase/firebase'
 // import './playground/promises'
 
 const store = configStore()
@@ -51,8 +52,28 @@ const jsx = (
         <AppRouter />
     </Provider>
     )
-ReactDOM.render(<p>loading....</p>,document.getElementById("app"));
-store.dispatch(startSetExpense())
-.then(()=>{
+let hasRendered = false;
+const RenderApp = ()=>{
+    if(!hasRendered){
         ReactDOM.render(jsx,document.getElementById("app"));
+        hasRendered = true
+    }
+}
+
+ReactDOM.render(<p>loading....</p>,document.getElementById("app"));
+firebase.auth().onAuthStateChanged((user)=>{
+    if(user){
+        store.dispatch(Login(user.uid))
+        store.dispatch(startSetExpense())
+        .then(()=>{
+            RenderApp()
+            if(history.location.pathname ==='/'){
+                history.push('/dashboard')
+            }
+        })
+    }else{
+        store.dispatch(Logout())
+        RenderApp()
+        history.push('/')
+    }
 })
