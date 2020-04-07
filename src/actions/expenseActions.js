@@ -61,3 +61,6 @@ export const startSetExpense = ()=>{
     }
 }
 
+export const clearExpense =()=>({
+    type:'CLEAREXPENSE'
+})

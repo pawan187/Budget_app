@@ -6,7 +6,7 @@ import {BrowserRouter, Route, Switch, Link, NavLink } from 'react-router-dom'
 import './Styles/style.scss';
 import AppRouter , { history } from './Routers/AppRouters.js'
 import configStore from './store/config-store';
-import {addExpense , editExpense ,removeExpense , setExpense , startSetExpense, startEditExpense} from './actions/expenseActions';
+import {addExpense , editExpense ,removeExpense , setExpense, clearExpense , startSetExpense, startEditExpense} from './actions/expenseActions';
 import {Login , Logout} from './actions/auth'
 // import {setEndDate , setStartDate , sortByAmount ,setTextFilter , sortByDate} from './actions/filterActions';
 // import getVisible from './selectors/expenses'
@@ -73,6 +73,7 @@ firebase.auth().onAuthStateChanged((user)=>{
         })
     }else{
         store.dispatch(Logout())
+        store.dispatch(clearExpense())
         RenderApp()
         history.push('/')
     }

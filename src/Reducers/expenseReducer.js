@@ -19,7 +19,9 @@ const expenseReducer = (state = expenseReducerDefault ,action)=>{
                 })
             );
         case 'SETEXPENSE' :
-            return ( action.expense )
+            return ( action.expense );
+        case  'CLEAREXPENSE':
+            return {};
          default : 
          return state
      }
