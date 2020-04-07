@@ -1,5 +1,6 @@
 import React from 'react'
 import {connect } from 'react-redux';
+import {Link } from 'react-router-dom'
 import ExpenseItem from './ExpenseItem';
 import selectorExpense from '../selectors/expenses'
 import ExpenseFilter from './ExpenseFilter'
@@ -15,16 +16,22 @@ class ExpenseList  extends React.Component{
     render(){
         return(
             <div>
-            <h1>Viewing {this.props.expenses.length} item of value : { this.totalValue(this.props.expenses) }</h1>
-            <ExpenseFilter />
-            <h3>expense list</h3>
-            <ul>
-            {
-                this.props.expenses.map((element)=>{
-                    return <ExpenseItem key={element.id} {...element} />
-                })
-            }
-            </ul>
+                <div className="container">
+                    <h1>Viewing {this.props.expenses.length} item of value : { this.totalValue(this.props.expenses) } rupees.</h1>
+                </div>
+                <ExpenseFilter />
+                <div>    
+                <div className="col">
+                        <h2>Expense list <Link className="btn btn-primary" to='/create'>Add Expense</Link> </h2>   
+                    </div>
+                <ul className="list-group">
+                {
+                    this.props.expenses.map((element)=>{
+                        return <ExpenseItem key={element.id} {...element} />
+                    })
+                }
+                </ul>
+                </div>
             </div>
         )
     }

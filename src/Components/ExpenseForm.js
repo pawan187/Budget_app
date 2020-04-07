@@ -55,22 +55,34 @@ export default class ExpenseForm extends React.Component{
     }
     render(){
         return ( 
-            <div>
+            <div className="container">
             {this.state.error && <p>{this.state.error}</p> }
-            <form onSubmit = {this.onSubmit}>
-             <input type="text" value={this.state.description} onChange={this.onDescriptionChange} placeholder = "please enter" autoFocus />
-             <input type='text' value={this.state.amount} onChange={this.onAmountChange} placeholder = 'amount' />             
-             <textarea type='text' value={this.state.note} onChange={this.onNoteChange} placeholder = 'add a note' />
-             <SingleDatePicker
-                date={this.state.createdAt} // momentPropTypes.momentObj or null
-                onDateChange={this.onDatechange} // PropTypes.func.isRequired
-                focused={this.state.focused} // PropTypes.bool
-                onFocusChange={this.onFocusChange} // PropTypes.func.isRequired
-                numberOfMonths = {1}
-                isOutsideRange = {()=>{false}}
-                id="your_unique_id" // PropTypes.string.isRequired,
-            />
-             <button onClick={this.handClick}>add</button>
+            <form  onSubmit = {this.onSubmit}>
+             <div className="form-group">
+             <label htmlFor="description" >description </label>
+             <input  id="description" className="form-control" type="text" value={this.state.description} onChange={this.onDescriptionChange} placeholder = "please enter" autoFocus />
+             </div>
+             <div className="form-group">
+             <label htmlFor="amount" >amount </label>
+                <input id="amount" className="form-control" type='text' value={this.state.amount} onChange={this.onAmountChange} placeholder = 'amount' />             
+             </div>
+             <div className="form-group">
+             <label htmlFor="note" >note</label>
+                <textarea id="note" className="form-control" type='text' value={this.state.note} onChange={this.onNoteChange} placeholder = 'add a note' />
+             </div>
+             <div className="form-group">
+                Pick a date   : 
+                <SingleDatePicker
+                    date={this.state.createdAt} // momentPropTypes.momentObj or null
+                    onDateChange={this.onDatechange} // PropTypes.func.isRequired
+                    focused={this.state.focused} // PropTypes.bool
+                    onFocusChange={this.onFocusChange} // PropTypes.func.isRequired
+                    numberOfMonths = {1}
+                    isOutsideRange = {()=>{false}}
+                    id="your_unique_id" // PropTypes.string.isRequired,
+                />
+            </div>
+             <button className="form-control btn-primary" onClick={this.handClick}>add</button>
             </form>
             </div>
         )

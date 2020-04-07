@@ -8,6 +8,7 @@ import AppRouter , { history } from './Routers/AppRouters.js'
 import configStore from './store/config-store';
 import {addExpense , editExpense ,removeExpense , setExpense, clearExpense , startSetExpense, startEditExpense} from './actions/expenseActions';
 import {Login , Logout} from './actions/auth'
+import 'bootstrap/dist/css/bootstrap.css';
 // import {setEndDate , setStartDate , sortByAmount ,setTextFilter , sortByDate} from './actions/filterActions';
 // import getVisible from './selectors/expenses'
 // import moment from 'moment';

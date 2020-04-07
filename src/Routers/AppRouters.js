@@ -18,7 +18,6 @@ export const history =  createBrowserHistory()
           <PrivateRoute path="/dashboard" component={Expense} />
           <PrivateRoute path="/create" component={AddExpense} />
           <PrivateRoute path="/edit/:id" component={EditExpense} />
-          <PrivateRoute path="/help" component={HelpExpense} />
           <Route component={Error}/> 
         </Switch>
       </div>

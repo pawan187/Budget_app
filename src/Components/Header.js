@@ -3,14 +3,11 @@ import {NavLink} from 'react-router-dom'
 import {startLogout} from '../actions/auth'
 import { connect } from 'react-redux'
 const Header = (props)=>(
-    <header>
-      <h1>Budget App</h1>
-      <NavLink activeClassName="is-active" exact={true} to='/dashboard'>home</NavLink>
-      <NavLink activeClassName="is-active" to='/create'>create</NavLink>
-      <NavLink activeClassName="is-active" to='/help'>help</NavLink>
-      <button onClick={props.startLogout}>Log out</button>
-    </header>
-  )
+    <div className="navbar navbar-light bg-light">
+      <NavLink  className="navbar-brand text-primary"  to='/dashboard'><h1> Budget App </h1></NavLink>
+      <button className="btn btn-primary" onClick={props.startLogout}>Log out</button>
+    </div>
+   )
 
   const mapDispatchtoProps = (dispatch)=>({
     startLogout : ()=> dispatch(startLogout())

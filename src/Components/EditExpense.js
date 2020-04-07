@@ -5,17 +5,20 @@ import ExpenseForm from './ExpenseForm'
 const EditExpense = (props)=>{
     return ( 
     <div>
+    
         <ExpenseForm 
-        expense = {props.expense}
-        onSubmit = {(expense)=>{
-            props.dispatch(startEditExpense({id : props.match.params.id , update : expense }))
-            props.history.push('/dashboard')
-        }}
+            expense = {props.expense}
+            onSubmit = {(expense)=>{
+                props.dispatch(startEditExpense({id : props.match.params.id , update : expense }))
+                props.history.push('/dashboard')
+            }}
         />
-        <button onClick={(e)=>{
-            props.dispatch(startRemoveExpense({id : props.match.params.id}))
-            props.history.push('/dashboard')
-        }}>remove</button>
+        <div className="container">
+            <button className="col btn-danger" onClick={(e)=>{
+                props.dispatch(startRemoveExpense({id : props.match.params.id}))
+                props.history.push('/dashboard')
+            }}>remove</button>
+        </div>
     </div>)
 }
 const mapStatetoProps = (state,props)=>{

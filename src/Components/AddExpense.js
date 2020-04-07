@@ -3,7 +3,7 @@ import ExpenseForm from './ExpenseForm'
 import { connect } from 'react-redux'
 import {startAddExpense } from '../actions/expenseActions'
 const AddExpense =  (props)=>(
-    <div>
+    <div className="container">
         <h3> Add expense</h3>
         <ExpenseForm 
         onSubmit = {  (expense)=>{
