@@ -7,10 +7,13 @@ const AddExpense =  (props)=>(
         <h3> Add expense</h3>
         <ExpenseForm 
         onSubmit = {  (expense)=>{
-          props.dispatch(startAddExpense(expense))
+          props.dispatch(startAddExpense({...expense , uid : props.uid}))
           props.history.push('/dashboard')
         }}
         />
       </div>
   )
-  export default connect()(AddExpense);
+  const mapStatetoProps = (state)=>({
+    uid : state.auth.uid
+  })
+  export default connect(mapStatetoProps)(AddExpense);

@@ -17,20 +17,22 @@ class ExpenseList  extends React.Component{
         return(
             <div>
                 <div className="container">
-                    <h1>Viewing {this.props.expenses.length} item of value : { this.totalValue(this.props.expenses) } rupees.</h1>
+                    <h1 className="col"> Viewing {this.props.expenses.length} item of value : { this.totalValue(this.props.expenses) } rs.</h1>
                 </div>
-                <ExpenseFilter />
-                <div>    
-                <div className="col">
-                        <h2>Expense list <Link className="btn btn-primary" to='/create'>Add Expense</Link> </h2>   
+                <div className="row">
+                    <div className="col-md-auto">
+                        <ExpenseFilter />
                     </div>
-                <ul className="list-group">
-                {
-                    this.props.expenses.map((element)=>{
-                        return <ExpenseItem key={element.id} {...element} />
-                    })
-                }
-                </ul>
+                    <div className="col alert-light">
+                        <h2>Expense list <Link className="btn btn-primary" to='/create'>Add Expense</Link> </h2>            
+                        <ul className="list-group">
+                        {
+                            this.props.expenses.map((element)=>{
+                                return <ExpenseItem key={element.id} {...element} />
+                            })
+                        }
+                        </ul>
+                    </div>
                 </div>
             </div>
         )

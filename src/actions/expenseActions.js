@@ -49,12 +49,14 @@ export const setExpense = (expense)=>({
     expense
 })
 
-export const startSetExpense = ()=>{
+export const startSetExpense = (uid)=>{
     return (dispatch)=>{
        return database.ref('expense').once('value').then((snapshot)=>{
             let expense = [];
             snapshot.forEach((element)=>{
-                expense.push({id : element.key , ...element.val()})
+                if(element.val().uid===uid){
+                    expense.push({id : element.key , ...element.val()})
+                }
             })
             dispatch(setExpense(expense))
         })

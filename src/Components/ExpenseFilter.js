@@ -32,7 +32,7 @@ class ExpenseFilter extends React.Component {
     render(){
         return (
             <div className="container alert-light">
-                <h3>Apply some filters on data</h3>
+                <h3>Apply some filters</h3>
                     <div className="row">
                         <p className="col">Search by text : 
                         <input type="text" placeholder="search something" value={this.props.filter.text} onChange={(e)=>{
