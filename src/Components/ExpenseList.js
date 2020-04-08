@@ -27,6 +27,8 @@ class ExpenseList  extends React.Component{
                         <h2>Expense list <Link className="btn btn-primary" to='/create'>Add Expense</Link> </h2>            
                         <ul className="list-group">
                         {
+                           this.props.expenses.length===0 ? 
+                           <p>please add some expense or alter your filters</p>:
                             this.props.expenses.map((element)=>{
                                 return <ExpenseItem key={element.id} {...element} />
                             })
